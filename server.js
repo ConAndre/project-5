@@ -15,14 +15,6 @@ if (app.get('env') === 'production') {
   // trust first proxy
   app.set('trust proxy', 1);
 
-  // serve secure cookies
-  Object.assign(SESSION, {
-    cookie: {
-      sameSite: true,
-      secure: true,
-    },
-  });
-
   // redirect to https
   app.use((req, res, next) => {
     if (req.header('x-forwarded-proto') !== 'https')
