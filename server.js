@@ -3,13 +3,7 @@ const history = require('connect-history-api-fallback');
 const serveStatic = require('serve-static');
 const path = require('path');
 
-require('dotenv').config();
-
 const app = express();
-
-const {
-  PORT = 3000,
-} = process.env;
 
 if (app.get('env') === 'production') {
   // trust first proxy
@@ -73,6 +67,7 @@ app.use((err, req, res, next) => {
   };
 });
 
-app.listen(PORT, () => console.log(`API listening on ${PORT}!`));
+const port = 3000;
+app.listen(port, () => console.log(`API listening on ${port}!`));
 
 module.exports = app;

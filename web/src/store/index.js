@@ -7,19 +7,21 @@ const vuexLocal = new VuexPersistence({
 
 export default createStore({
   state: {
-    data: { key: 'value' }
+    data: { key: 'default' }
   },
   mutations: {
-    commitData(state) {
+    commitData(state, data) {
       state.data = JSON.parse(JSON.stringify(data));
-    }
+    },
   },
   actions: {
-    setData(state, data) {
-      this.commit('commitData', data);
-    }
+    setData({ commit }, data) {
+      commit('commitData', data);
+    },
   },
   modules: {},
   plugins: [vuexLocal.plugin],
-
+  getters: {
+    getStateKey: (state) => (key) => state[key],
+  },
 });
