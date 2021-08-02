@@ -67,9 +67,8 @@ app.use((err, req, res, next) => {
   };
 });
 
-if (app.get('env') !== 'production') {
-  const port = 3000;
-  app.listen(port, () => console.log(`API listening on ${port}!`));
-}
+const PORT = process.env.PORT || 3000;
+if (app.get('env') !== 'production') { }
+app.listen(PORT, () => console.log(`API listening on ${PORT}!`));
 
 module.exports = app;
