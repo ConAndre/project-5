@@ -67,7 +67,9 @@ app.use((err, req, res, next) => {
   };
 });
 
-const port = 3000;
-app.listen(port, () => console.log(`API listening on ${port}!`));
+if (app.get('env') !== 'production') {
+  const port = 3000;
+  app.listen(port, () => console.log(`API listening on ${port}!`));
+}
 
 module.exports = app;
